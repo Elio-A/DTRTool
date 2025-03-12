@@ -20,7 +20,7 @@ function App() {
         </a>
       </header>
       <h1>
-        Hello. Test
+        Hello. Tests
       </h1>
     </div>
   );
