@@ -5,6 +5,7 @@ const Login: React.FC = () => {
 
     const handleLogin = async () => {
         navigate("/home")
+        console.log("Handling")
     }
 
     return(
