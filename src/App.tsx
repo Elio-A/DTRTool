@@ -7,8 +7,8 @@ function App() {
   console.log("Here")
   return (
     <Routes>
-      <Route path="/" element={<Login/>}/>
       <Route path="/home" element={<HomePage/>}/>
+      <Route path="/" element={<Login/>}/>
     </Routes>
   );
 }
