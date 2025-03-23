@@ -1,9 +1,11 @@
 import { useNavigate } from "react-router-dom"
+import { db } from "../../../firebase"
 
-const Login: React.FC = () => {
+const Login: React.FC<{onLogin: () => void}> = ({onLogin}) => {
     const navigate = useNavigate()
 
     const handleLogin = async () => {
+        onLogin();
         navigate("/home")
         console.log("Handling")
     }
@@ -13,6 +15,7 @@ const Login: React.FC = () => {
             <button onClick={handleLogin}>
                 Login to Home
             </button>
+            
         </div>        
     )
 }
