@@ -1,4 +1,5 @@
 import { useNavigate } from "react-router-dom"
+import { db } from "../../../firebase"
 
 const Login: React.FC<{onLogin: () => void}> = ({onLogin}) => {
     const navigate = useNavigate()
