@@ -3,10 +3,10 @@ import React, { useState } from "react"
 import './LoginPage.css'
 
 const Login: React.FC = () => {
-    const navigate = useNavigate()
-    const [email, setEmail] = useState('')
-    const [password, setPassword] = useState('')
-    const [error, setError] = useState('')
+    const navigate = useNavigate();
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const [error, setError] = useState('');
 
     const handleLogin = async (e: React.FormEvent <HTMLFormElement>) => {
         e.preventDefault();
