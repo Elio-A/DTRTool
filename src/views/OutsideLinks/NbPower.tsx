@@ -1,6 +1,6 @@
 import { useEffect } from "react"
 
-const Home: React.FC = () => {
+const NbPower: React.FC = () => {
     const handleHomePage = async () => {
     }
     
@@ -13,9 +13,9 @@ const Home: React.FC = () => {
             <h2>
                 Hello. You are in the Home page
             </h2>
-            <iframe src="https://www.google.com/maps/d/embed?mid=1wyr97M0-FDH4euQlNhMsuFh-OAeG62U&ehbc=2E312F&noprof=1" width="640" height="480"></iframe>
+            <iframe src="https://www.google.com/maps/d/embed?mid=11_yj6yCqWqzKCgpXgYXGJEjQaIQ&ehbc=2E312F" width="640" height="480"></iframe>
         </div>        
     )
 }
 
-export default Home
+export default NbPower

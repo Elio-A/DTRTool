@@ -8,10 +8,17 @@ const Login: React.FC = () => {
         console.log("Handling")
     }
 
+    const handleNBPowerSite = async () => {
+        navigate("/NBPower")
+    }
+
     return(
         <div>
             <button onClick={handleLogin}>
                 Login to Home
+            </button>
+            <button onClick={handleNBPowerSite}>
+                NB Power website Lines
             </button>
         </div>        
     )
