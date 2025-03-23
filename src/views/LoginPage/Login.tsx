@@ -26,6 +26,12 @@ const Login: React.FC = () => {
         }
     }
 
+    const handleSignup = async (e: React.MouseEvent <HTMLButtonElement>) => {
+        e.preventDefault();
+        console.log("Signup button clicked");
+        navigate("/signup")
+    }
+
     const simulateApiCall = async (email: string, password: string) => {
         await new Promise(resolve => setTimeout(resolve, 100))
         
@@ -57,8 +63,11 @@ const Login: React.FC = () => {
                     />
                 </div>
                 <button type = "submit" className = "btn-primary">Login</button>
+                <div className = "form-group">
+                    <p>Don't have an account yet?</p>
+                    <button className = "btn-primary" onClick = {handleSignup}>Signup</button>
+                </div>
             </form>
-            <p>Don't have an account yet? Too Bad!</p>
         </div>   
     )
 }
