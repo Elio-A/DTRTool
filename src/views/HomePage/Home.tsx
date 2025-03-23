@@ -1,19 +1,31 @@
 import { useEffect } from "react"
+import { useNavigate } from "react-router-dom"
 
 const Home: React.FC = () => {
+    const navigate = useNavigate()
     const handleHomePage = async () => {
     }
     
+    const handleNBPowerSite = async () => {
+        navigate("/NBPower")
+    }
+
     useEffect(() => {
         console.log("In Home Screen")
     }, []);
 
+
+
     return(
         <div>
+            
             <h2>
                 Hello. You are in the Home page
             </h2>
-            <iframe src="https://www.google.com/maps/d/embed?mid=1wyr97M0-FDH4euQlNhMsuFh-OAeG62U&ehbc=2E312F&noprof=1" width="640" height="480"></iframe>
+            <button onClick={handleNBPowerSite}>
+                NB Power website Lines
+            </button>
+            
         </div>        
     )
 }

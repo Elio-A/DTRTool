@@ -1,15 +1,12 @@
 import { useNavigate } from "react-router-dom"
 
-const Login: React.FC = () => {
+const Login: React.FC<{onLogin: () => void}> = ({onLogin}) => {
     const navigate = useNavigate()
 
     const handleLogin = async () => {
+        onLogin();
         navigate("/home")
         console.log("Handling")
-    }
-
-    const handleNBPowerSite = async () => {
-        navigate("/NBPower")
     }
 
     return(
@@ -17,9 +14,7 @@ const Login: React.FC = () => {
             <button onClick={handleLogin}>
                 Login to Home
             </button>
-            <button onClick={handleNBPowerSite}>
-                NB Power website Lines
-            </button>
+            
         </div>        
     )
 }
