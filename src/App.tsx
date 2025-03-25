@@ -1,23 +1,61 @@
 import './App.css';
 import Login from "./views/LoginPage/Login"
 import HomePage from "./views/HomePage/Home"
+import MapView from "./views/MapPage/MapView"
+import NbPower from './views/OutsideLinks/NbPower';
 import Signup from "./views/SignupPage/Signup"
-// import MapView from "./views/MapPage/MapView"
-// import NbPower from './views/OutsideLinks/NbPower';
 import { Navigate, Route, Routes, useLocation } from 'react-router-dom';
 import { Box } from '@mui/material';
-// import Sidebar from './global/AppSidebar';
+import Sidebar from './global/AppSidebar';
 import { useState } from 'react';
-//import ProtectedRoutes from './components/ProtectedRoutes/ProtectedRoutes';
+// import ProtectedRoutes from './components/ProtectedRoutes/ProtectedRoutes';
 
 function App() {
-  console.log("Here")
+
+  const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(false);
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+
+  const location = useLocation()
+  const showSidebar = location.pathname !== "/login";
+
   return (
-    <Routes>
-      <Route path="/home" element={<HomePage/>}/>
-      <Route path="/Login" element={<Login/>}/>
-      <Route path="/Signup" element={<Signup/>}/>
-    </Routes>
+    <Box display={'flex'} flexDirection={"column"} height={"100vh"}>
+      {isAuthenticated && (
+      <Sidebar
+        initialSelected='Home'
+        isCollapsed={isSidebarCollapsed}
+        setIsCollapsed={setIsSidebarCollapsed}
+      />
+      )}
+      <Box
+        sx={{
+          flexGrow: 1,
+          paddingLeft: showSidebar ? isSidebarCollapsed
+            ? "80px" : "270px"
+          : "0px",
+          transition: "padding-left 0.3s",
+          overflow: "auto"
+        }}
+      >
+        <main className="content">
+          <Routes>
+            <Route path="/login" element={<Login/>}/>
+            <Route path="*" element={<Navigate to="/login"/>}/>
+            <Route path="/Signup" element={<Signup/>}/>
+
+          {isAuthenticated && (
+            <>
+            {/* <Route element={<ProtectedRoutes/>}> */}
+              <Route path="/home" element={<HomePage/>}/>
+              <Route path="/map" element={<MapView/>}/>
+              <Route path="/NBPower" element={<NbPower/>}/>
+            {/* </Route> */}
+            </>
+          )}
+          </Routes>
+        </main>
+      </Box>
+    </Box>
   );
 }
 
