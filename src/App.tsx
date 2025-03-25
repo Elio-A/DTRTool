@@ -39,7 +39,7 @@ function App() {
       >
         <main className="content">
           <Routes>
-            <Route path="/login" element={<Login/>}/>
+            <Route path="/login" element={<Login onLogin={() => setIsAuthenticated(true)}/>}/>
             <Route path="*" element={<Navigate to="/login"/>}/>
             <Route path="/Signup" element={<Signup/>}/>
 

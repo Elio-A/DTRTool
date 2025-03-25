@@ -3,7 +3,7 @@ import { db } from "../../../firebase"
 import React, { useState } from "react"
 import './LoginPage.css'
 
-const Login: React.FC = () => {
+const Login: React.FC<{onLogin: () => void}> = ({onLogin}) => {
     const navigate = useNavigate();
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -15,6 +15,7 @@ const Login: React.FC = () => {
             const response = await simulateApiCall(email, password)
     
             if (response.success){
+                onLogin()
                 console.log("Login Successful!")
                 navigate("/home")
             }
