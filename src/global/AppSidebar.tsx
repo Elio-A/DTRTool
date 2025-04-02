@@ -1,8 +1,10 @@
-import { Box, Typography, useTheme } from "@mui/material";
+import { AppBar, Box, Button, Grid2, IconButton, Skeleton, Toolbar, Typography, useTheme } from "@mui/material";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Sidebar, Menu, MenuItem } from "react-pro-sidebar";
 import { Activity, HomeIcon, LogOutIcon, MapIcon, MenuIcon } from "lucide-react"
+import { AppProvider } from '@toolpad/core/AppProvider';
+import { DashboardLayout, PageContainer } from "@toolpad/core";
 
 interface SideBarProps {
     initialSelected?: string;
@@ -82,12 +84,12 @@ function AppSidebar({ initialSelected = "Home", isCollapsed, setIsCollapsed }: S
                     {/* Logout Route */}
                     <MenuItem
                         icon={<LogOutIcon/>}
-                        //onClick={() => handleNavigation("/logout")}
+                        onClick={() => handleNavigation("/login")}
                         active={selected === "Logout"}
                         >
                         <Typography>Sign Out</Typography>
                     </MenuItem>
-                </Menu>
+                </Menu> 
             </Sidebar>
         </Box>
     )

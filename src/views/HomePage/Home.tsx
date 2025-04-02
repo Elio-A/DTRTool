@@ -1,7 +1,13 @@
-import { useEffect } from "react"
+import { Box, Button, Input, TextField } from "@mui/material"
+import { useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom"
+import { db } from "../../../firebase"
+import { addDoc, collection } from "firebase/firestore"
 
 const Home: React.FC = () => {
+    const ref = collection(db, "users")
+    const [Username, setUsername] = useState("")
+
     const navigate = useNavigate()
     const handleHomePage = async () => {
     }
@@ -14,7 +20,16 @@ const Home: React.FC = () => {
         console.log("In Home Screen")
     }, []);
 
-
+    const handleSubmit = async () => {
+        const userData = {
+            username: Username
+        }
+        try{
+            const docRef = await addDoc(ref, userData);
+        } catch(e) {
+            console.error("ERrror adding document ", e);
+        }
+    };
 
     return(
         <div>
@@ -25,7 +40,13 @@ const Home: React.FC = () => {
             <button onClick={handleNBPowerSite}>
                 NB Power website Lines
             </button>
-            
+            <br/><br/>
+            <Box mb={3}>
+                <TextField label="Username" variant="outlined" fullWidth value={Username} onChange={(e) => setUsername(e.target.value)} required />
+            </Box>
+            <Button type="submit" onClick={handleSubmit}>
+                Submit
+            </Button>
         </div>        
     )
 }
